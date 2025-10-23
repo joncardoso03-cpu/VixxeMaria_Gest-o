@@ -1,0 +1,5 @@
+{
+  "name": "Sistema de Controle de Insumos",
+  "description": "Uma aplicação web moderna para gerenciar o inventário de insumos, com sugestões inteligentes de IA para categorização de itens.",
+  "requestFramePermissions": []
+}
