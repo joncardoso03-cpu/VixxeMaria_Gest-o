@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -7,18 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Controle de Insumos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.26.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
   }
 }
 </script>
+    <script>
+      // Evita o "flash" de tema errado no carregamento
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
 </head>
-  <body class="bg-gray-900 text-gray-100">
+  <body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-200">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

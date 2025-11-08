@@ -1,14 +1,8 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-  // Em um ambiente real, você poderia desabilitar as features de IA se a chave não estiver presente.
-  console.warn("API Key do Gemini não encontrada. As funcionalidades de IA estarão desabilitadas.");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// FIX: Initialize GoogleGenAI directly with process.env.API_KEY and remove API_KEY checks
+// per coding guidelines. Assume API_KEY is always available.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const suggestionSchema = {
     type: Type.OBJECT,
@@ -26,10 +20,7 @@ const suggestionSchema = {
 };
 
 export const suggestItemDetails = async (itemName: string): Promise<{ categoria: string, unidade: string }> => {
-    if (!API_KEY) {
-        return Promise.reject(new Error("API Key do Gemini não configurada."));
-    }
-    
+    // FIX: Removed API_KEY check per coding guidelines.
     try {
         const prompt = `Para o insumo de estoque chamado "${itemName}", sugira a melhor categoria e unidade de medida. Responda em português do Brasil.`;
         
